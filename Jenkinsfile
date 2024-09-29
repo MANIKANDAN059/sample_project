@@ -9,6 +9,9 @@ pipeline{
         }
 
         stage ('Run Tests') {
+            when {
+                branch 'PR-*'
+            }
             steps {
                 script {
                     if (isUnix()) {
