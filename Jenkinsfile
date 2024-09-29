@@ -9,17 +9,22 @@ pipeline{
         }
 
         stage ('Run Tests') {
+            when {
+                branch 'PR-*'
+            }
             steps {
                 script {
                     if (isUnix()) {
-                        sh 
+                        sh
                         '''
                         python --version
+                        echo "MANI...."
                         '''
                     } else {
                         bat
                         '''
                         python --version
+                        echo "MANI...."
                         '''
                     }
                 }
