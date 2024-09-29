@@ -15,7 +15,7 @@ pipeline{
             steps {
                 script {
                     if (isUnix()) {
-                        sh 
+                        sh
                         '''
                         python --version
                         '''
