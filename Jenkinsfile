@@ -18,13 +18,13 @@ pipeline{
                         sh
                         '''
                         python --version
-                        echo "MANI...."
+                        echo "MANI_1...."
                         '''
                     } else {
                         bat
                         '''
                         python --version
-                        echo "MANI...."
+                        echo "MANI_2...."
                         '''
                     }
                 }
