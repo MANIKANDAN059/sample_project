@@ -1,34 +1,28 @@
 pipeline{
     agent any
-
+    environment {
+        GITHUB_WEBHOOK_SECRET = credentials('github-webhook-secret')
+    }
     stages {
         stage ('Checkout') {
+            when {
+                branch "PR-*"
+            }
             steps {
-                git url: 'https://github.com/MANIKANDAN059/sample_project.git', branch: 'main'
+                git url: 'https://github.com/MANIKANDAN059/sample_project.git', 
+                branch: 'main'
             }
         }
 
-        stage ('Run Tests') {
+        stage('Validate Webhook') {
             when {
                 branch 'PR-*'
             }
             steps {
                 script {
-                    if (isUnix()) {
-                        sh
-                        '''
-                        python --version
-                        echo "MANI_1...."
-                        '''
-                    } else {
-                        bat
-                        '''
-                        python --version
-                        echo "MANI_2...."
-                        '''
-                    }
+                    echo "Webhook Secret:"
+                    echo "MANI:"
                 }
-
             }
         }
     }
